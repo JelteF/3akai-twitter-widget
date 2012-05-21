@@ -1,0 +1,35 @@
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="/devwidgets/twitter/css/twitter.css" />
+
+<div style="display:none">__MSG__IE_PLACEHOLDER__</div>
+
+<!-- WIDGET CONTENT CONTAINER -->
+<div class="twitter_widget">
+    <!-- MAIN VIEW -->
+    <div id="twitter_main" style="display:none;">
+        
+    </div>
+    <!-- SETTINGS VIEW -->
+    <div id="twitter_settings" style="display:none;">
+        <form id="twitter_settings_form" action="#">
+            <p> __MSG__TYPE__:
+                <input id="twitter_widget_type_profile" type="radio" name="twitter_widget_type" value="profile" />__MSG__PROFILE_WIDGET__
+                <input id="twitter_widget_type_search" type="radio" name="twitter_widget_type" value="search" />__MSG__SEARCH_WIDGET__
+            </p>
+            <p>
+                <div id="twitter_profile_text" style="display:none;">__MSG__PROFILE_NAME__</div>
+                <div id="twitter_search_text" style="display:none;">__MSG__SEARCH_QUERY__</div>
+                <input id="twitter_profile_or_query" />
+            </p>
+            
+            <div class="fl-force-right">
+                <button type="button" class="s3d-button s3d-link-button" id="twitter_cancel_settings">__MSG__CANCEL__</button>
+                <button type="submit" class="s3d-button s3d-overlay-button">__MSG__SAVE__</button>
+            </div>
+            <hr class="fl-hidden fl-push" />
+        </form>
+    </div>
+</div>
+
+<!-- JAVASCRIPT -->
+<script type="text/javascript" src="/devwidgets/twitter/javascript/twitter.js"></script>

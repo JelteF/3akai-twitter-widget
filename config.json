@@ -1,0 +1,23 @@
+{
+    "id":                 "twitter",
+    "name":               "Twitter",
+    "description":        "Twitter",
+    "type":               "contrib",
+    "enabled":            true,
+    "hasSettings":        true,
+    "url":                "/devwidgets/twitter/twitter.html",
+    "i18n": {
+        "default": {
+            "bundle":        "/devwidgets/twitter/bundles/default.properties",
+            "name":           "Twitter",
+            "description":    "Twitter"
+        }
+    },
+    "personalportal":     true,
+    "sakaidocs":          true,
+    "showinsakaigoodies": true,
+    "groupdashboard":     false,
+    "grouppages":         false,
+    "userdashboard":      false,
+    "userpages":          false
+}
