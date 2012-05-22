@@ -11,6 +11,9 @@
             "bundle":        "/devwidgets/twitter/bundles/default.properties",
             "name":           "Twitter",
             "description":    "Twitter"
+        },
+        "nl_NL": {
+            "bundle":        "/devwidgets/twitter/bundles/nl_NL.properties"
         }
     },
     "personalportal":     true,
