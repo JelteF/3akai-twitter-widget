@@ -17,7 +17,7 @@
  */
 
 // load the master sakai object to access all Sakai OAE API methods
-require(["jquery", "sakai/sakai.api.core"], function($, sakai) {
+require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.js"], function($, sakai) {
      
     /**
      * @name sakai.twitter
@@ -96,10 +96,11 @@ require(["jquery", "sakai/sakai.api.core"], function($, sakai) {
          */
          
         var showMainView = function (profileQuery, profileRB) {
+            $mainContainer.html('<div id="twitter_actual_widget_' + tuid + '"> </div>');
             if (profileRB){
                 new TWTR.Widget({
                     version: 2,
-                    id: $mainContainer.attr('id'),
+                    id: "twitter_actual_widget_" + tuid,
                     type: 'profile',
                     rpp: 4,
                     interval: 30000,
@@ -117,9 +118,9 @@ require(["jquery", "sakai/sakai.api.core"], function($, sakai) {
                         }
                     },
                     features: {
-                        scrollbar: false,
+                        scrollbar: true,
                         loop: false,
-                        live: false,
+                        live: true,
                         behavior: 'all'
                     }
                 }).render().setUser(profileQuery).start();
@@ -238,9 +239,7 @@ require(["jquery", "sakai/sakai.api.core"], function($, sakai) {
 
                 $settingsContainer.show();
             } else {
-                $.getScript("http://widgets.twimg.com/j/2/widget.js", function() {
-                    getPreferredInput(showMainView);
-                });
+                getPreferredInput(showMainView);
             }
         };
         
