@@ -17,7 +17,7 @@
  */
 
 // load the master sakai object to access all Sakai OAE API methods
-require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.js"], function($, sakai) {
+require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.js'], function($, sakai) {
      
     /**
      * @name sakai.twitter
@@ -36,19 +36,19 @@ require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.
         /////////////////////////////
         // Configuration variables //
         /////////////////////////////
-        var DEFAULT_INPUT = "sakaiproject";
+        var DEFAULT_INPUT = 'sakaiproject';
 
         // DOM jQuery Objects
-        var $rootel = $("#" + tuid); //unique container for each widget instance
-        var $mainContainer = $("#twitter_main", $rootel);
-        var $settingsContainer = $("#twitter_settings", $rootel);
-        var $settingsForm = $("#twitter_settings_form", $rootel);
-        var $cancelSettings = $("#twitter_cancel_settings", $rootel);
-        var $profileRB = $("#twitter_widget_type_profile", $rootel);
-        var $searchRB = $("#twitter_widget_type_search", $rootel);
-        var $profileText = $("#twitter_profile_text", $rootel);
-        var $searchText = $("#twitter_search_text", $rootel);
-        var $profileQuery = $("#twitter_profile_or_query", $rootel);
+        var $rootel = $('#' + tuid); //unique container for each widget instance
+        var $mainContainer = $('#twitter_main', $rootel);
+        var $settingsContainer = $('#twitter_settings', $rootel);
+        var $settingsForm = $('#twitter_settings_form', $rootel);
+        var $cancelSettings = $('#twitter_cancel_settings', $rootel);
+        var $profileRB = $('#twitter_widget_type_profile', $rootel);
+        var $searchRB = $('#twitter_widget_type_search', $rootel);
+        var $profileText = $('#twitter_profile_text', $rootel);
+        var $searchText = $('#twitter_search_text', $rootel);
+        var $profileQuery = $('#twitter_profile_or_query', $rootel);
 
         ///////////////////////
         // Utility functions //
@@ -96,11 +96,12 @@ require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.
          */
          
         var showMainView = function (profileQuery, profileRB) {
-            $mainContainer.html('<div id="twitter_actual_widget_' + tuid + '"> </div>');
+            var widgetID = 'twitter_actual_widget_' + tuid;
+            $mainContainer.html('<div id="' + widgetID + '"> </div>');
             if (profileRB){
                 new TWTR.Widget({
                     version: 2,
-                    id: "twitter_actual_widget_" + tuid,
+                    id: widgetID,
                     type: 'profile',
                     rpp: 4,
                     interval: 30000,
@@ -130,7 +131,7 @@ require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.
             
                 new TWTR.Widget({
                     version: 2,
-                    id: $mainContainer.attr('id'),
+                    id: widgetID,
                     type: 'search',
                     search: profileQuery,
                     interval: 30000,
@@ -191,7 +192,7 @@ require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.
         // Event Handlers //
         ////////////////////
 
-        $settingsForm.on("submit", function (ev) {
+        $settingsForm.on('submit', function (ev) {
             // get the selected input
             var profileQuery = $profileQuery.val();
             var profileRB = $profileRB.is(':checked');
@@ -204,23 +205,23 @@ require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.
                 function (success, data) {
                     if (success) {
                         // Settings finished, switch to Main view
-                        sakai.api.Widgets.Container.informFinish(tuid, "twitter");
+                        sakai.api.Widgets.Container.informFinish(tuid, 'twitter');
                     }
                 }
             );
             return false
         });
 
-        $cancelSettings.on("click", function() {
-            sakai.api.Widgets.Container.informFinish(tuid, "twitter");
+        $cancelSettings.on('click', function() {
+            sakai.api.Widgets.Container.informFinish(tuid, 'twitter');
         });
 
-        $searchRB.on("click", function() {
+        $searchRB.on('click', function() {
             $searchText.show();
             $profileText.hide();
         });
         
-        $profileRB.on("click", function() {
+        $profileRB.on('click', function() {
             $profileText.show();
             $searchText.hide();
         });
@@ -248,5 +249,5 @@ require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.
     };
 
     // inform Sakai OAE that this widget has loaded and is ready to run
-    sakai.api.Widgets.widgetLoader.informOnLoad("twitter");
+    sakai.api.Widgets.widgetLoader.informOnLoad('twitter');
 });
