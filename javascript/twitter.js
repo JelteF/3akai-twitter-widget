@@ -191,7 +191,7 @@ require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.
         // Event Handlers //
         ////////////////////
 
-        $settingsForm.bind("submit", function (ev) {
+        $settingsForm.on("submit", function (ev) {
             // get the selected input
             var profileQuery = $profileQuery.val();
             var profileRB = $profileRB.is(':checked');
@@ -211,16 +211,16 @@ require(["jquery", "sakai/sakai.api.core", "http://widgets.twimg.com/j/2/widget.
             return false
         });
 
-        $cancelSettings.bind("click", function() {
+        $cancelSettings.on("click", function() {
             sakai.api.Widgets.Container.informFinish(tuid, "twitter");
         });
 
-        $searchRB.bind("click", function() {
+        $searchRB.on("click", function() {
             $searchText.show();
             $profileText.hide();
         });
         
-        $profileRB.bind("click", function() {
+        $profileRB.on("click", function() {
             $profileText.show();
             $searchText.hide();
         });

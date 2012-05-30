@@ -6,6 +6,7 @@
     "enabled":            true,
     "hasSettings":        true,
     "url":                "/devwidgets/twitter/twitter.html",
+    "img":                "/devwidgets/twitter/images/twitter.png",
     "i18n": {
         "default": {
             "bundle":        "/devwidgets/twitter/bundles/default.properties",
