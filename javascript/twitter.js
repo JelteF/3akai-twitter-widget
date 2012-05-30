@@ -31,7 +31,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
      * @param {String} tuid Unique id of the widget
      * @param {Boolean} showSettings Show the settings of the widget or not
      */
-    sakai_global.twitter = function (tuid, showSettings) {
+    sakai_global.twitter = function(tuid, showSettings) {
          
         /////////////////////////////
         // Configuration variables //
@@ -60,7 +60,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
          *
          * @param {String} profileQuery The profile or query
          */
-        var checkInput = function (profileQuery) {
+        var checkInput = function(profileQuery) {
             return (profileQuery && $.trim(profileQuery)) ? $.trim(profileQuery) : DEFAULT_INPUT;
         };
 
@@ -71,9 +71,9 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
          * @param {Object} callback Function to call when the request returns. This
          * function will be sent a String with the preferred profile or channel.
          */
-        var getPreferredInput = function (callback) {
+        var getPreferredInput = function(callback) {
             // get the data associated with this widget
-            sakai.api.Widgets.loadWidgetData(tuid, function (success, data) {
+            sakai.api.Widgets.loadWidgetData(tuid, function(success, data) {
                 if (success) {
                     // fetching the data succeeded, send it to the callback function
                     callback(checkInput(data.profileQuery), data.profileRB);
@@ -95,7 +95,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
          * @param {String} widgetType Is it a profile or a search widget
          */
          
-        var showMainView = function (profileQuery, profileRB) {
+        var showMainView = function(profileQuery, profileRB) {
             var widgetID = 'twitter_actual_widget_' + tuid;
             $mainContainer.html('<div id="' + widgetID + '"> </div>');
             if (profileRB){
@@ -174,7 +174,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
          * @param {String} profileQuery The profile or query string
          * @param {Boolean} profileRB Is it a profile widget
          */
-        var renderSettings = function (profileQuery, profileRB) {
+        var renderSettings = function(profileQuery, profileRB) {
             $profileQuery.val(checkInput(profileQuery));
             if (profileRB) {
                 $profileText.show();
@@ -192,7 +192,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
         // Event Handlers //
         ////////////////////
 
-        $settingsForm.on('submit', function (ev) {
+        $settingsForm.on('submit', function(ev) {
             // get the selected input
             var profileQuery = $profileQuery.val();
             var profileRB = $profileRB.is(':checked');
@@ -202,7 +202,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
                 profileQuery: profileQuery,
                 profileRB: profileRB
             },
-                function (success, data) {
+                function(success, data) {
                     if (success) {
                         // Settings finished, switch to Main view
                         sakai.api.Widgets.Container.informFinish(tuid, 'twitter');
@@ -234,7 +234,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
         /**
          * Initialization function DOCUMENTATION
          */
-        var doInit = function () {
+        var doInit = function() {
             if (showSettings) {
                 getPreferredInput(renderSettings);
 
