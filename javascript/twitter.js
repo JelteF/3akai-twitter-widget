@@ -18,7 +18,7 @@
 
 // load the master sakai object to access all Sakai OAE API methods
 require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.js'], function($, sakai) {
-     
+
     /**
      * @name sakai.twitter
      *
@@ -32,7 +32,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
      * @param {Boolean} showSettings Show the settings of the widget or not
      */
     sakai_global.twitter = function(tuid, showSettings) {
-         
+
         /////////////////////////////
         // Configuration variables //
         /////////////////////////////
@@ -53,7 +53,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
         ///////////////////////
         // Utility functions //
         ///////////////////////
-        
+
         /**
          * Checks if the provided profile or query is non-empty and returns it
          * if that is the case. If it is empty it returns the DEFAULT_INPUT
@@ -94,7 +94,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
          * @param {String} profileQuery The profile name or query
          * @param {String} widgetType Is it a profile or a search widget
          */
-         
+
         var showMainView = function(profileQuery, profileRB) {
             var widgetID = 'twitter_actual_widget_' + tuid;
             $mainContainer.html('<div id="' + widgetID + '"> </div>');
@@ -128,7 +128,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
 
             }
             else {
-            
+
                 new TWTR.Widget({
                     version: 2,
                     id: widgetID,
@@ -157,12 +157,12 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
                         behavior: 'all'
                     }
                 }).render().start();
-            
+
             }
             $mainContainer.show();
-        
+
         }
-        
+
 
         /////////////////////////////
         // Settings View functions //
@@ -186,7 +186,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
                 $searchRB.prop('checked', true);
             }
         };
-            
+
 
         ////////////////////
         // Event Handlers //
@@ -196,7 +196,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
             // get the selected input
             var profileQuery = $profileQuery.val();
             var profileRB = $profileRB.is(':checked');
-            
+
             // save the selected input
             sakai.api.Widgets.saveWidgetData(tuid, {
                 profileQuery: profileQuery,
@@ -213,14 +213,14 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
         });
 
         $cancelSettings.on('click', function() {
-            sakai.api.Widgets.Container.informFinish(tuid, 'twitter');
+            sakai.api.Widgets.Container.informCancel(tuid, 'twitter');
         });
 
         $searchRB.on('click', function() {
             $searchText.show();
             $profileText.hide();
         });
-        
+
         $profileRB.on('click', function() {
             $profileText.show();
             $searchText.hide();
@@ -230,7 +230,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
         /////////////////////////////
         // Initialization function //
         /////////////////////////////
-        
+
         /**
          * Initialization function DOCUMENTATION
          */
@@ -243,7 +243,7 @@ require(['jquery', 'sakai/sakai.api.core', 'http://widgets.twimg.com/j/2/widget.
                 getPreferredInput(showMainView);
             }
         };
-        
+
         // run the initialization function when the widget object loads
         doInit();
     };
